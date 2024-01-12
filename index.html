@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Blurred Background Example</title>
+   <link rel="stylesheet" href="css/all.min.css" />
+   <link rel="stylesheet" href="css/normaliz.css" />
+   <style type="text/css">
+       *{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: Sans-Serif;
+         transition-duration: .5s;
+         }
+         body {
+            display: grid;
+            place-items: center;
+         }
+         .parent {
+            width: 200px ;
+            height: 200px ;
+            position: relative;
+         }
+         .left {
+            position: absolute;
+            left: 0%;
+            overflow: hidden;
+         }
+         .top {
+            width: 60%;
+            height: 60% ;
+            background-image: linear-gradient(to bottom , #000 60%, #fff 60%);
+            border-radius: 50% 50% 40% 40%;
+         }
+         .right {
+            right: 0%;
+            position: absolute;
+         }
+         .bottom {
+            z-index: 9;
+            width: 60%;
+            height: 60% ;
+            background-image: linear-gradient(to bottom , #fff 40%, #008b45 40%);
+            width: 91%;
+            height: 50%;
+            bottom: 0;
+            left: 4.5%;
+            position: absolute;
+            clip-path: polygon(0 0 , 100% 0 , 50% 100%);
+         }
+         .left.top::before{
+            position: absolute;
+            content: '';
+            width: 100% ;
+            height: 70% ;
+            background-color: #8b3020;
+            clip-path: polygon(0 0 , 100% 80% , 0 100%);
+            left: 0;
+            bottom: 0;
+         }
+         .bottom::before{
+            position: absolute;
+            content: '';
+            width: 60% ;
+            height: 100% ;
+            background-color: #8b3020;
+            left: -13%;
+            top: -55%;
+            transform: rotate(45deg);
+         }
+   </style>
+</head>
+<body> 
+   <div class="parent">
+      <div class="right top"></div>
+      <div class="bottom"></div>
+      <div class="left top"></div>
+   </div>
+</body>
+</html>
